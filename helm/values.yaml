@@ -29,7 +29,12 @@ securityContext:
 folding:
   user: "Anonymous"
   team: "0"
-  passkey: "" # (get one here: https://apps.foldingathome.org/getpasskey)
+  passkey: # (get one here: https://apps.foldingathome.org/getpasskey)
+    ## secret containing your claimToken. if not set it will create a secret instead using claimToken.value
+    secret:
+    secretKey: passkey
+    ## only specify value if you are passing in the plain text claimToken
+    value:
   power: "medium" # light/medium/full
 
 resources:

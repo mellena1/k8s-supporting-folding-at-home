@@ -37,8 +37,12 @@ spec:
           - name: PASSKEY
             valueFrom:
               secretKeyRef:
+{{- if .Values.folding.passkey.secret }}
+                name: "{{ .Values.folding.passkey.secret }}"
+{{- else }}
                 name: {{ include "k8s-supporting-folding-at-home.fullname" . }}
-                key: passkey
+{{- end }}
+                key: "{{ .Values.folding.passkey.secretKey }}"
           - name: POWER
             value: "{{default "medium" .Values.folding.power }}"
           volumeMounts:
